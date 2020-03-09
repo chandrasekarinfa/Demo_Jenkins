@@ -1,0 +1,22 @@
+[
+   {
+      "objectGuid": "hnbJm7cVsiab0Y6lllF2IS",
+      "objectName": "CI_CD_ASSET",
+      "objectType": "Project",
+      "path": "/Explore",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "Binary",
+            "description": "",
+            "documentState": "COMPLETE"
+         },
+         "contextAttributes": [],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": null
+      }
+   }
+]
