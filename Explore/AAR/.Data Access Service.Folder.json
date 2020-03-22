@@ -1,0 +1,22 @@
+[
+   {
+      "objectGuid": "cpegDF3GRQ1ijfacDSWBMA",
+      "objectName": "Data Access Service",
+      "objectType": "Folder",
+      "path": "/Explore/AAR",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "Binary",
+            "description": "",
+            "documentState": "COMPLETE"
+         },
+         "contextAttributes": [],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": null
+      }
+   }
+]

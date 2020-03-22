@@ -1,0 +1,262 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>yWJgki8MZgpDqot-gt-36800-2019-09-26T09:38:32.397Z::pd.xml</types1:EntryId>
+      <types1:Name>TEST_DAS</types1:Name>
+      <types1:ParentFlowIds>fUC8WrY1SypmXbe-gt-216794-2019-09-26T09:38:33.086Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Test process to test various scenarios on DAS Service</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:Process Integration,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>chak@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2019-09-26T09:38:32Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="TEST DAS"
+                  name="TEST_DAS">
+            <appliesTo/>
+            <description>Test process to test various scenarios on DAS Service</description>
+            <tags>.agent:Process Integration,.anonymous</tags>
+            <generator>Informatica Process Designer 9</generator>
+            <input>
+               <parameter description="" name="in_Order_Nbr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="testResults" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:TestResult</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="testResult" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:TestResult</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="dasRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">DataAccessService:tDataAccessRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="multiDasRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">DataAccessService:tMultiDataAccessRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>Process Integration</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="jn1zr2sz" targetId="ivltrinc"/>
+               </start>
+               <assignment id="ivltrinc">
+                  <title>Set Invoke Stored Procedure</title>
+                  <operation source="formula" to="temp.dasRequest">
+                     <expression language="XQuery">&lt;DataAccessRequest&gt;
+   &lt;sqlStatement&gt;
+      &lt;statementId&gt;test_table_insert_many&lt;/statementId&gt;
+      &lt;columnCase&gt;lowercase&lt;/columnCase&gt;
+      &lt;hasResultSet&gt;false&lt;/hasResultSet&gt;
+      &lt;statement&gt;CALL VSAT_CA_SPARES_MGMT_SHIP(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)&lt;/statement&gt;
+      &lt;procedure&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_VIASAT_CUSTOMER_CODE&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;11872&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_AAR_VENDOR_CODE&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;34338&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_CUSTOMER_PO_NUMBER&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;VIASATAARTEST7&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_DRO_NUMBER&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;273001&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_ORDER_NUMBER&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;{$input.in_Order_Nbr}&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_AAR_ORDER_NUMBER&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;T999204&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_PART_NUMBER&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;1244523&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_SERIAL_NUMBER&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;C82818100164&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_QUANTITY&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;1&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_SHIPMENT_TYPE&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;USRVC_AAR&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_SHIP_TO_LOCATION&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;DWH&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_SHIP_FROM_LOCATION&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;AA&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_SHIPPED_DATE&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;21-Sep-2018&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_CARRIER&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;UPS&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_SHIP_METHOD&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;PRIORITY&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_BOL_WAYBILL_NUM&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;1234&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;P_SHIPMENT_REMARKS&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;in&lt;/mode&gt;
+            &lt;data&gt;Tetsing RTV Ship 273001&lt;/data&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;x_return_status&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;out&lt;/mode&gt;
+         &lt;/procedureParameter&gt;
+         &lt;procedureParameter&gt;
+         	&lt;name&gt;x_return_message&lt;/name&gt;
+            &lt;sqlType&gt;string&lt;/sqlType&gt;
+            &lt;mode&gt;out&lt;/mode&gt;
+         &lt;/procedureParameter&gt;
+      &lt;/procedure&gt;
+   &lt;/sqlStatement&gt;
+   &lt;dataSource&gt;DS1&lt;/dataSource&gt;
+&lt;/DataAccessRequest&gt;
+
+</expression>
+                  </operation>
+                  <link id="ivltrino" targetId="ivltrihv"/>
+               </assignment>
+               <eventContainer id="ivltrihv">
+                  <service id="ivltrii0">
+                     <title>execSQL</title>
+                     <serviceName>execSQL</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="dataAccessRequest" source="field">temp.dasRequest</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="ivltrihw">
+                     <assignment id="ivltrihx">
+                        <title>Assignment to testResults</title>
+                        <operation source="constant" to="temp.testResult[1]/testName">INSERT ROWS</operation>
+                        <operation source="constant" to="temp.testResult[1]/testResult">succes</operation>
+                        <operation source="constant" to="temp.testResult[1]/message"/>
+                     </assignment>
+                     <link id="ivltrii3" targetId="ivltrihv" type="containerLink"/>
+                  </flow>
+                  <flow id="ivltrihy">
+                     <assignment id="ivltrihz">
+                        <title>Assignment to testResults</title>
+                        <operation source="constant" to="temp.testResult[1]/testName">INSERT ROWS</operation>
+                        <operation source="constant" to="temp.testResult[1]/testResult">fail</operation>
+                        <operation source="formula" to="temp.testResult[1]/message">
+                           <expression language="XQuery">let $code   := concat("Code",$output.faultInfo[1]/code)
+let $reason := concat("Reason",$output.faultInfo[1]/reason)
+let $detail := concat("Detail",$output.faultInfo[1]/detail)
+
+let $messageParts := ($code,$reason,$detail)
+
+return string-join($messageParts, " ")
+</expression>
+                        </operation>
+                     </assignment>
+                     <link id="ivltrii4" targetId="ivltrihv" type="containerLink"/>
+                  </flow>
+                  <link id="ivltrii1" targetId="ivltrihw" type="containerLink"/>
+                  <link id="jn1bspco" targetId="d"/>
+                  <events>
+                     <catch faultField="faultInfo" id="ivjndd6p" interrupting="true">
+                        <link id="ivltrii2" targetId="ivltrihy" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="d"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>4bXDlNQvUU0h2G4rPbJ14Q</types1:GUID>
+      <types1:DisplayName>TEST DAS</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-03-22T10:32:08.715Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

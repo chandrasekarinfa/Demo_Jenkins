@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "4bXDlNQvUU0h2G4rPbJ14Q",
+      "objectName": "TEST DAS",
+      "objectType": "PROCESS",
+      "path": "/Explore/AAR/Data Access Service",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Test process to test various scenarios on DAS Service",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "yWJgki8MZgpDqot-gt-36800-2019-09-26T09:38:32.397Z::pd.xml"
+         }
+      }
+   }
+]
